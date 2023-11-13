@@ -5,6 +5,17 @@ export default async function handler(req, res) {
     const { method } = req;
     await mongooseConnect(req, res);
 
+    const commonProperties = {
+        title: req.body.title,
+        description: req.body.description,
+        priceAr: req.body.priceAr,
+        priceEx: req.body.priceEx,
+        images: req.body.images,
+        duration: req.body.duration,
+        active: req.body.active,
+        requirements: req.body.requirements,
+    };
+
     if (method === 'GET') {
         if (req.query?.id) {
             res.json(await Course.findOne({ _id: req.query.id }));
@@ -14,54 +25,13 @@ export default async function handler(req, res) {
     }
 
     if (method === 'POST') {
-        const {
-            title,
-            description,
-            priceAr,
-            priceEx,
-            images,
-            duration,
-            active,
-            requirements,
-        } = req.body;
-        const courseDoc = await Course.create({
-            title,
-            description,
-            priceAr,
-            priceEx,
-            images,
-            duration,
-            active,
-            requirements,
-        });
+        const courseDoc = await Course.create(commonProperties);
         res.json(courseDoc);
     }
 
     if (method === 'PUT') {
-        const {
-            title,
-            description,
-            priceAr,
-            priceEx,
-            images,
-            duration,
-            _id,
-            active,
-            requirements,
-        } = req.body;
-        await Course.updateOne(
-            { _id },
-            {
-                title,
-                description,
-                priceAr,
-                priceEx,
-                images,
-                duration,
-                active,
-                requirements,
-            }
-        );
+        const { _id } = req.body;
+        await Course.updateOne({ _id }, { ...commonProperties });
         res.json(true);
     }
 
