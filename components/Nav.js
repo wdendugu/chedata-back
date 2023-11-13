@@ -53,22 +53,24 @@ export default function Nav() {
                     Leads
                 </Link>
                 <Link
-                    href={'/orders'}
+                    href={'/sections'}
                     className={
-                        pathname.includes('/orders') ? activeLink : inactiveLink
+                        pathname.includes('/sections')
+                            ? activeLink
+                            : inactiveLink
                     }
                 >
                     <OrdersIcon />
-                    Orders
+                    Comisiones
                 </Link>
                 <Link
-                    href={'/admins'}
+                    href={'/tutors'}
                     className={
-                        pathname.includes('/admins') ? activeLink : inactiveLink
+                        pathname.includes('/tutors') ? activeLink : inactiveLink
                     }
                 >
                     <AdminIcon />
-                    Admins
+                    Docentes
                 </Link>
                 <Link
                     href={'/settings'}
@@ -81,10 +83,10 @@ export default function Nav() {
                     <SettingsIcon />
                     Settings
                 </Link>
-                <button className={inactiveLink} onClick={console.log('Ok')}>
+                {/* <button className={inactiveLink} onClick={console.log('Ok')}>
                     <LogoutIcon />
                     Logout
-                </button>
+                </button> */}
             </nav>
         </aside>
     );

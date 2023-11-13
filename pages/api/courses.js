@@ -14,8 +14,16 @@ export default async function handler(req, res) {
     }
 
     if (method === 'POST') {
-        const { title, description, priceAr, priceEx, images, duration } =
-            req.body;
+        const {
+            title,
+            description,
+            priceAr,
+            priceEx,
+            images,
+            duration,
+            active,
+            requirements,
+        } = req.body;
         const courseDoc = await Course.create({
             title,
             description,
@@ -23,16 +31,36 @@ export default async function handler(req, res) {
             priceEx,
             images,
             duration,
+            active,
+            requirements,
         });
         res.json(courseDoc);
     }
 
     if (method === 'PUT') {
-        const { title, description, priceAr, priceEx, images, duration, _id } =
-            req.body;
+        const {
+            title,
+            description,
+            priceAr,
+            priceEx,
+            images,
+            duration,
+            _id,
+            active,
+            requirements,
+        } = req.body;
         await Course.updateOne(
             { _id },
-            { title, description, priceAr, priceEx, images, duration }
+            {
+                title,
+                description,
+                priceAr,
+                priceEx,
+                images,
+                duration,
+                active,
+                requirements,
+            }
         );
         res.json(true);
     }

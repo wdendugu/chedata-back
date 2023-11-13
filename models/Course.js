@@ -7,7 +7,9 @@ const CourseSchema = new Schema(
         priceAr: { type: Number, required: true },
         priceEx: { type: Number, required: true },
         images: [{ type: String }],
+        requirements: [{ type: String }],
         duration: { type: Number, required: true },
+        active: { type: Boolean, requiered: true },
     },
     {
         timestamps: true,
