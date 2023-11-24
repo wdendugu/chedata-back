@@ -9,7 +9,6 @@ export default function Tutors() {
     const [tutors, setTutors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-
     useEffect(() => {
         setIsLoading(true);
         axios

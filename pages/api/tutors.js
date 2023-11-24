@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         email: req.body.email,
         phone: req.body.phone,
         costPerHour: req.body.costPerHour,
-        courses: req.body.courses
+        courses: req.body.courses,
     };
 
     if (method === 'GET') {
